@@ -1,0 +1,21 @@
+.table th, .table td{
+    @apply border border-gray-300 px-4 py-2;
+    
+}
+
+.table thead{
+    @apply bg-gray-50 
+}
+
+.th{
+    @apply text-gray-400;
+
+
+}
+
+.table tbody tr {
+    @apply bg-gray-200;
+    text-align: center;
+    color: rgb(88, 88, 88);
+    
+}
