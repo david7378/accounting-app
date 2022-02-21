@@ -19,9 +19,9 @@ const Table = ({ gastos, setGasto, eliminarGasto, keyId }) => {
   }, [gastos]);
 
   return (
-    <div className="md:w-1/2 lg:w-3/5 max-w-max md:h-screen overflow-y-scroll mt-3">
+    <div className="md:w-1/2 lg:w-3/5 max-w-max md:h-screen ">
       {gastos && gastos.length ? (
-        <div>
+        <div overflow-y-scroll>
           <h2 className="text-gray-700 font-black text-3xl text-center">Listado de Gastos</h2>
           <p className="text-xl mt-4 mb-5 text-center">
             Administra tus {""}
@@ -53,15 +53,15 @@ const Table = ({ gastos, setGasto, eliminarGasto, keyId }) => {
           <Total totally={totally} />
         </div>
       ) : (
-        <>
-          <h2 className="text-gray-700 font-black text-3xl text-center">
+        <div className=" text-center mx-12 mt-3">
+          <h2 className="text-gray-700 font-black text-3xl ">
             No hay gastos aun...
           </h2>
-          <p className="text-lg mt-4 text-center mb-5">
+          <p className="text-lg mt-4 mb-5">
             Comienza agregando gastos y {""}
             <span className="text-blue-700 font-bold"> apareceran aqui</span>
           </p>
-        </>
+        </div>
       )}
     </div>
   );
