@@ -78,7 +78,7 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
       </h2>
 
       <p className="text-lg mt-4 text-center mb-5">
-        Carga tus gastos diario y {""}
+        Carga tus gastos diarios y {""}
         <span className="text-blue-700 font-bold">Administralos</span>
       </p>
 
