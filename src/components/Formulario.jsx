@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
+const Formulario = ({ gastos, setGastos, gasto, setGasto }) => {
   const [fecha, setFecha] = useState("");
   const [nombre, setNombre] = useState("");
   const [monto, setMonto] = useState("");
@@ -51,7 +51,7 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
       // Editando el registro
       objetoGasto.id = gasto.id;
 
-      const gastosActualizados = gastos.map( gastoState =>
+      const gastosActualizados = gastos.map((gastoState) =>
         gastoState.id === gasto.id ? objetoGasto : gastoState
       );
 
@@ -72,10 +72,10 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
   };
 
   return (
-    <div className="md:w-1/2 lg:w-2/5 mx-5 mt-3">
-      <h2 className="text-gray-700 font-black text-3xl text-center">
+    <div className="md:w-1/2 lg:w-2/5  mx-5 mt-1">
+      {/* <h2 className="text-gray-700 font-black text-3xl text-center">
         Seguimiento de cuentas
-      </h2>
+      </h2> */}
 
       <p className="text-lg mt-4 text-center mb-5">
         Carga tus gastos diarios y {""}
@@ -84,7 +84,7 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 "
       >
         {error && (
           <Error>
@@ -133,7 +133,7 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
             id="monto"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             type="text"
-            placeholder="Monto $"
+            placeholder="$"
             value={monto}
             onChange={(e) => setMonto(e.target.value)}
           />
@@ -144,16 +144,19 @@ const Formulario = ({ gastos, setGastos, gasto, setGasto,  }) => {
             htmlFor="formapago"
             className="block text-gray-700 uppercase font-bold"
           >
-            Forma de pago
+            Pago con
           </label>
-          <input
-            id="formapago"
+
+          <select
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            type="text"
-            placeholder="Forma de pago"
             value={formapago}
             onChange={(e) => setFormapago(e.target.value)}
-          />
+          >
+            <option value="" disabled >Elige la forma</option>
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+          </select>
+         
         </div>
         <div className="mb-5">
           <label

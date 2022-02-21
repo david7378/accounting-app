@@ -1,4 +1,5 @@
-import React from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 function ItemTable({ gasto, setGasto, eliminarGasto, totally }) {
   const { fecha, nombre, monto, formapago, descripcion, id } = gasto;
@@ -18,22 +19,19 @@ function ItemTable({ gasto, setGasto, eliminarGasto, totally }) {
       <td>{gasto.formapago}</td>
       <td>{gasto.descripcion}</td>
       <td>
-        <button
+        <EditIcon
+          class="inline-flex items-center justify-center w-5 h-5 mr-2 text-indigo-100 transition-colors duration-150 bg-gray-300 rounded-full focus:shadow-outline hover:bg-blue-200"
           type="button"
-          className="h-8 px-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800"
           onClick={() => {
             setGasto(gasto);
           }}
-        >
-          Editar
-        </button>
-        <button
-          className="h-8 ml-3 px-2 text-sm text-indigo-100 transition-colors duration-150 bg-red-600 rounded-lg cursor-pointer focus:shadow-outline hover:bg-red-800"
+        />
+
+        <DeleteIcon
+          class="inline-flex items-center justify-center w-5 h-5 mr-2 text-indigo-100 transition-colors duration-150 bg-gray-300 rounded-full focus:shadow-outline hover:bg-red-200"
           type="button"
           onClick={handleEliminar}
-        >
-          Eliminar
-        </button>
+        />
       </td>
     </tr>
   );

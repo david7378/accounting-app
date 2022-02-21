@@ -6,7 +6,6 @@ import Table from "./components/Table";
 function App() {
   const [gastos, setGastos] = useState([]);
   const [gasto, setGasto] = useState([]);
-  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const obtenerLS = () => {
@@ -34,9 +33,9 @@ function App() {
   }
 
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-10 ">
       <Header />
-      <div className="mt-10 md:flex">
+      <div className="mt-10 md:flex ">
         <Formulario
           gastos={gastos}
           setGastos={setGastos}
@@ -44,7 +43,7 @@ function App() {
           setGasto={setGasto}
         />
       
-        <Table
+        <Table 
          gastos={gastos}
          setGasto={setGasto}
          eliminarGasto={eliminarGasto}

@@ -3,6 +3,8 @@ import ItemTable from "./ItemTable";
 import Total from "./Total";
 
 const Table = ({ gastos, setGasto, eliminarGasto, keyId }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [totally, setTotally] = useState(0);
 
   useEffect(() => {
@@ -14,40 +16,60 @@ const Table = ({ gastos, setGasto, eliminarGasto, keyId }) => {
           return parseInt(a) + parseInt(b);
         });
       setTotally(totaly);
-      console.log(totaly);
+      //console.log(totaly);
     }
   }, [gastos]);
 
   return (
-    <div className="md:w-1/2 lg:w-3/5 max-w-max md:h-screen ">
+    <div className="md:w-1/2 lg:w-3/5 max-w-max mx-10 mt-1  md:h-screen overflow-auto md:mb-5 ">
       {gastos && gastos.length ? (
-        <div overflow-y-scroll>
-          <h2 className="text-gray-700 font-black text-3xl text-center">Listado de Gastos</h2>
+        <div>
+          {/* <h2 className="text-gray-700 font-black text-3xl text-center">
+            Listado de Gastos
+          </h2> */}
           <p className="text-xl mt-4 mb-5 text-center">
             Administra tus {""}
             <span className="text-blue-700 font-bold">Gastos</span>
           </p>
-
+          <input className="mb-1 bg-transparent border-none  text-gray-800 mr-3 py-1 px-1 leading-tight focus:outline-none"
+            type="text"
+            placeholder="Buscar por nombre"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
           <table className="table">
             <thead>
               <tr>
                 <th>Fecha</th>
                 <th>Nombre</th>
                 <th>Monto</th>
-                <th>Forma de pago</th>
-                <th>Descripcion</th>
-                <th>Operacion</th>
+                <th>Pago</th>
+                <th>Descripción</th>
+                <th>Operación</th>
               </tr>
             </thead>
             <tbody>
-              {gastos.map((gasto) => (
-                <ItemTable
-                  key={gasto.id}
-                  gasto={gasto}
-                  setGasto={setGasto}
-                  eliminarGasto={eliminarGasto}
-                />
-              ))}
+              {gastos
+                .filter((val) => {
+                  if (searchTerm === "") {
+                    return val;
+                  } else if (
+                    val.nombre
+                      .toLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase())
+                  ) {
+                    return val;
+                  }
+                })
+                .map((gasto) => (
+                  <ItemTable
+                    key={gasto.id}
+                    gasto={gasto}
+                    setGasto={setGasto}
+                    eliminarGasto={eliminarGasto}
+                  />
+                ))}
             </tbody>
           </table>
           <Total totally={totally} />
